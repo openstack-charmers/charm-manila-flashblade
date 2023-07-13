@@ -1,4 +1,4 @@
-charm_name: manila-infinidat
+charm_name: manila-flashblade
 target_deploy_status:
   vault:
     workload-status: blocked
@@ -15,8 +15,7 @@ target_deploy_status:
   ntp:
     workload-status-message-prefix: "chrony: Ready"
 tests:
-  - tests.tests.CinderInfinidatBackendTest
-  - tests.tests.CinderInfinidatTest
+  - tests.tests.ManilaFlashBladeTest
 configure:
   - zaza.openstack.charm_tests.vault.setup.auto_initialize_no_validation
   - zaza.openstack.charm_tests.keystone.setup.wait_for_cacert
@@ -25,7 +24,6 @@ configure:
   - zaza.openstack.charm_tests.nova.setup.create_flavors
   - zaza.openstack.charm_tests.neutron.setup.basic_overcloud_network
   - zaza.openstack.charm_tests.nova.setup.manage_ssh_key
-  - tests.tests.configure_infinidat_share_type
 gate_bundles:
   - jammy-antelope
   - lunar-antelope
