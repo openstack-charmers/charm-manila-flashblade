@@ -1,0 +1,25 @@
+name: manila-flashblade
+summary: Pure Storage Flashblade integration for OpenStack File Storage
+maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+description: |
+ Manila is the shared file service for the Openstack project.
+ .
+ This charm provides a FlashBlade backend for Manila
+tags:
+  - openstack
+  - storage
+  - file-servers
+  - misc
+series:
+  - jammy
+subordinate: true
+provides:
+  manila-plugin:
+    interface: manila-plugin
+    scope: container
+requires:
+  certificates:
+    interface: tls-certificates
+  juju-info:
+    interface: juju-info
+    scope: container

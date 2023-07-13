@@ -1,0 +1,77 @@
+---
+options:
+  extra_packages:
+    description: >
+      Space separated list of extra deb packages to install.
+    type: string
+    default: ""
+  package_status:
+    default: "install"
+    type: string
+    description: >
+      The status of service-affecting packages will be set to this
+      value in the dpkg database. Valid values are "install" and "hold".
+  install_sources:
+    description: |
+      Optional configuration to support use of additional sources such as:
+        - ppa:myteam/ppa
+        - cloud:trusty-proposed/kilo
+        - http://my.archive.com/ubuntu main
+      The last option should be used in conjunction with the key configuration
+      option. See https://repo.infinidat.com/home/main-stable for details.
+      The charm also supports templating of the distribution codename via
+      automatic expansion of {distrib_codename} depending on the host system
+    default: "deb https://repo.infinidat.com/packages/main-stable/apt/linux-ubuntu {distrib_codename} main"
+    type: string
+  install_keys:
+    description: >
+      List of signing keys for install_sources package sources, per
+      charmhelpers standard format (a yaml list of strings encoded as
+      a string). The keys should be the full ASCII armoured GPG public
+      keys. While GPG key ids are also supported and looked up on a
+      keyserver, operators should be aware that this mechanism is
+      insecure. null can be used if a standard package signing key is
+      used that will already be installed on the machine, and for PPA
+      sources where the package signing key is securely retrieved from
+      Launchpad.
+    type: string
+    default: |
+      -----BEGIN PGP PUBLIC KEY BLOCK-----
+      Version: GnuPG v1.4.11 (GNU/Linux)
+
+      mQENBFESDRIBCADMR7MQMbH4GdCQqfrOMt35MhBwwH4wv9kb1WRSTxa0CmuzYaBB
+      1nJ0nLaMAwHsEr9CytPWDpMngm/3nt+4F2hJcsOEkQkqeJ31gScJewM+AOUV3DEl
+      qOeXXYLcP+jUY6pPjlZpOw0p7moUQPXHn+7amVrk7cXGQ8O3B+5a5wjN86LT2hlX
+      DlBlV5bX/DYluiPUbvQLOknmwO53KpaeDeZc4a8iIOCYWu2ntuAMddBkTps0El5n
+      JJZMTf6os2ZzngWMZRMDiVJgqVRi2b+8SgFQlQy0cAmne/mpgPrRq0ZMX3DokGG5
+      hnIg1mF82laTxd+9qtiOxupzJqf8mncQHdaTABEBAAG0IWFwcF9yZXBvIChDb21t
+      ZW50KSA8bm9AZW1haWwuY29tPokBOAQTAQIAIgUCURINEgIbLwYLCQgHAwIGFQgC
+      CQoLBBYCAwECHgECF4AACgkQem2D/j05RYSrcggAsCc4KppV/SZX5XI/CWFXIAXw
+      +HaNsh2EwYKf9DhtoGbTOuwePvrPGcgFYM3Tu+m+rziPnnFl0bs0xwQyNEVQ9yDw
+      t465pSgmXwEHbBkoISV1e4WYtZAsnTNne9ieJ49Ob/WY4w3AkdPRK/41UP5Ct6lR
+      HHRXrSWJYHVq5Rh6BakRuMJyJLz/KvcJAaPkA4U6VrPD7PFtSecMTaONPjGCcomq
+      b7q84G5ZfeJWb742PWBTS8fJdC+Jd4y5fFdJS9fQwIo52Ff9In2QBpJt5Wdc02SI
+      fvQnuh37D2P8OcIfMxMfoFXpAMWjrMYc5veyQY1GXD/EOkfjjLne6qWPLfNojA==
+      =w5Os
+      -----END PGP PUBLIC KEY BLOCK-----
+  debug:
+    default: !!bool false
+    type: boolean
+    description: Enable debug logging
+  verbose:
+    default: !!bool false
+    type: boolean
+    description: Enable verbose logging
+  flashblade-mgmt-vip:
+    type: string
+    description: The management VIP of the FlashBlade.
+  flashblade-data-vip:
+    type: string
+    description: The data VIP of the FlashBlade.
+  flashblade-api:
+    type: string
+    description: The API token for the FlashBlade.
+  share-backend-name:
+    type: string
+    description: Manila backend name
+    default: __app__

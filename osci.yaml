@@ -1,0 +1,8 @@
+- project:
+    templates:
+      - charm-unit-jobs-py310
+    vars:
+      needs_charm_build: true
+      charm_build_name: manila-flashblade
+      build_type: charmcraft
+      charmcraft_channel: 2.1/stable
