@@ -1,5 +1,5 @@
 [gerrit]
 host=review.opendev.org
 port=29418
-project=openstack/charm-manila-infinidat.git
+project=openstack/charm-manila-flashblade.git
 defaultbranch=main
